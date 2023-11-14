@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const gameData = [
         {
             "Art Piece Name": "Salvator Mundi",
@@ -363,65 +363,39 @@ document.addEventListener('DOMContentLoaded', function() {
         isGuessSubmitted = false;
     }
 
-    function createDigitElements(price) {
-        const priceContainer = document.getElementById('original-price-value');
-        priceContainer.innerHTML = ''; // Clear previous content
-      
-        // Split the price into individual digits
-        const digits = price.toString().split('');
-      
-        // Create a span for each digit with an animation delay
-        digits.forEach((digit, index) => {
-          const digitSpan = document.createElement('span');
-          digitSpan.classList.add('digit');
-          digitSpan.textContent = digit;
-          digitSpan.style.animation = `slotMachine 0.5s ${index * 40000}ms forwards`; // Apply animation with delay
-      
-          const digitContainer = document.createElement('div');
-          digitContainer.classList.add('digit-container');
-          digitContainer.appendChild(digitSpan);
-      
-          priceContainer.appendChild(digitContainer);
-        });
-      }
-
     function revealOriginalPrice() {
         const originalPriceElement = document.getElementById('original-price-value');
         const originalPrice = gameData[currentRound]["Original Price (million USD)"].replace(/[^0-9.]/g, "");
     
-        // Animate the original price value
-        originalPriceElement.style.transform = 'translateY(-100%)'; // Move the element up
-        setTimeout(() => {
-            originalPriceElement.textContent = originalPrice;
-            originalPriceElement.style.transform = 'translateY(0)'; // Reset to original position
-        }, 3000); // This timeout should match the CSS transition duration
-    
-        createDigitElements(originalPrice);
+        originalPriceElement.textContent = originalPrice;
         document.getElementById('original-price').style.display = 'block';
-        document.getElementById('submit-guess').textContent = 'Next';
-        document.getElementById('user-guess').style.display = 'none';
+        document.getElementById('submit-guess').textContent = 'Next'; // Change button text to "Next"
+        document.getElementById('user-guess').style.display = 'none'; // Hide the input text field
         isGuessSubmitted = true;
     }
+    
+    
 
-     
+
+
 
     function calculateScore(userGuess, originalPrice) {
         // Parse the user's guess and original price to numbers
         const guess = parseFloat(userGuess);
         const price = parseFloat(originalPrice.replace(/[^0-9.]/g, ""));
         const difference = guess - price;
-        cumulativeDifference += difference;  // Update cumulative difference
-    
+        cumulativeDifference += difference; // Update cumulative difference
+
         // Update the gain/loss display
         const userGuessValueElement = document.getElementById('user-guess-value');
         const gainLossValueElement = document.getElementById('gain-loss-value');
         const cumulativeDifferenceValueElement = document.getElementById('cumulative-difference-value');
         const gainLossInfo = document.getElementById('gain-loss-info');
-    
+
         userGuessValueElement.textContent = guess.toFixed(2);
         gainLossValueElement.textContent = difference.toFixed(2);
         cumulativeDifferenceValueElement.textContent = cumulativeDifference.toFixed(2);
-    
+
         // Apply the 'negative-difference' class if the difference is negative
         if (difference < 0) {
             gainLossValueElement.classList.add('negative-difference');
@@ -430,14 +404,13 @@ document.addEventListener('DOMContentLoaded', function() {
             gainLossValueElement.classList.remove('negative-difference');
             cumulativeDifferenceValueElement.classList.remove('negative-difference');
         }
-    
-        
-        gainLossInfo.style.display = 'block';  // Show the gain/loss info
-    
+
+        gainLossInfo.style.display = 'block'; // Show the gain/loss info
+
         // Return the absolute value of difference for score calculation
-        return Math.max(0, 100 - Math.abs(difference) * 10);  // Adjust the scoring as needed
+        return Math.max(0, 100 - Math.abs(difference) * 10); // Adjust the scoring as needed
     }
-    
+
     function submitOrNextRound() {
         const userGuessElement = document.getElementById('user-guess');
         const userGuess = userGuessElement.value;
@@ -450,7 +423,7 @@ document.addEventListener('DOMContentLoaded', function() {
         totalScore += difference;
         document.getElementById('user-score').textContent = totalScore.toFixed(2);
         revealOriginalPrice();
-    
+
         // If "Next" button is clicked
         if (isGuessSubmitted) {
             if (currentRound < 8) {
@@ -458,7 +431,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 updateGame();
             } else {
                 alert(`Game over! Your final score is: ${totalScore.toFixed(2)}`);
-                // Handle end of game
+                // Handle the end of the game
             }
         }
     }
