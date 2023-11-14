@@ -431,6 +431,7 @@ document.addEventListener('DOMContentLoaded', function() {
             cumulativeDifferenceValueElement.classList.remove('negative-difference');
         }
     
+        
         gainLossInfo.style.display = 'block';  // Show the gain/loss info
     
         // Return the absolute value of difference for score calculation
