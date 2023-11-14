@@ -1,0 +1,74 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #faf8f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#game-container {
+    width: 80%;
+    max-width: 500px;
+    text-align: center;
+    background: #ffffff;
+    padding: 20px;
+    border: 2px solid #000;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+}
+
+header {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+#round-info {
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+figure {
+    margin: 0;
+    position: relative;
+}
+
+figcaption {
+    font-size: 1.2em;
+    margin-top: 10px;
+}
+
+#artist-name {
+    margin-top: 5px;
+    margin-bottom: 15px;
+    font-style: italic;
+}
+
+#user-guess {
+    font-size: 1em;
+    padding: 10px;
+    margin-right: 10px;
+}
+
+#submit-guess {
+    font-size: 1.5em;
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+}
+
+#original-price {
+    font-size: 1em;
+    color: #888;
+    margin-top: 20px;
+}
+
+#score-info {
+    font-size: 1em;
+    margin-top: 20px;
+}

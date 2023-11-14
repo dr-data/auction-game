@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Art Price Guessing Game</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #faf8f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #game-container {
+            width: 600px; /* Adjusted to fit the image */
+            border: 5px solid #000;
+            padding: 1em;
+            background: #fff;
+            text-align: center;
+        }
+        #site-title {
+            margin-bottom: 0.5em;
+            font-size: 2em;
+        }
+        #round-info {
+            margin-bottom: 0.5em;
+            font-weight: bold;
+        }
+        #art-image {
+            width: 50%; /* Set the image width to be half of its container */
+            height: auto; /* Maintain the aspect ratio */
+            display: block; /* Display block to remove any extra space around the image */
+            margin: 0 auto; /* Center the image within its container */
+        }
+        #art-piece-name {
+            margin: 0.5em 0;
+            font-size: 1.5em;
+        }
+        #artist-name {
+            margin-bottom: 0.5em;
+            font-style: italic;
+        }
+        #input-button-container {
+            display: flex; /* Use flexbox for the container */
+            justify-content: center; /* Center the flex items horizontally */
+            align-items: center; /* Align the flex items vertically */
+        }
+
+        #user-guess {
+            margin-right: 10px; /* Add some space between the input and the button */
+        }
+
+        #submit-guess {
+            flex: 0 0 auto; /* Prevents the button from growing and shrinking */
+        }
+
+        #submit-guess {
+            flex: 0 0 auto; /* Prevents the button from growing and shrinking */
+        }
+        #original-price {
+        margin-top: 0.5em;
+        height: 2rem; /* Fixed height to match the digit containers */
+        font-size: 2rem; /* Consistent font size */
+        display: inline-block; /* Align with other inline elements */
+        vertical-align: top; /* Align to the top to match the alignment of the digit containers */
+        }
+        #score-info {
+            margin-top: 0.5em;
+        }
+
+        @keyframes slotMachine {
+        0% { transform: translateY(100%); }
+        100% { transform: translateY(0); }
+        }
+
+        .digit-container {
+        display: inline-block;
+        height: 2rem; /* This should match the height of the digits */
+        overflow: hidden;
+        font-size: 2rem; /* Explicitly set the font size for the container to match the digits */
+        }
+
+        .digit {
+        display: block;
+        animation: slotMachine 4s ease-in-out forwards;
+        height: 2rem; /* This should match the height of the digits */
+        font-size: 2rem;
+        /* The font size is not specified here, it will be inherited from the container */
+        }
+
+    </style>
+</head>
+<body>
+    <div id="game-container">
+        <h1 id="site-title">Auction Game</h1>
+        <div id="round-info">Round <span id="current-round">1</span>/9</div>
+        <img id="art-image" src="" alt="Art piece">
+        <h2 id="art-piece-name">[Art Piece Name]</h2>
+        <br> by <br>
+        <div id="artist-name">[Artist Name]</div>
+        <div id="original-price">Original Price: $<span id="original-price-value"></span> million</div>
+
+        
+        <div id="input-button-container">
+            <input type="number" id="user-guess" placeholder="$0" min="0" step="0.1">
+            <button id="submit-guess">Submit Guess</button>
+        </div>
+   
+        <div id="score-info">Your Score: <span id="user-score">0</span></div>
+        <div id="gain-loss-info" style="display:none;">
+            You guessed: $<span id="user-guess-value"></span> million. <br>
+            Difference: $<span id="gain-loss-value"></span> million.<br>
+            Cumulative difference: $<span id="cumulative-difference-value"></span> million.
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

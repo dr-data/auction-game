@@ -1,0 +1,31 @@
+// fetch-api.js
+
+// Get the API token from the user
+const apiToken = prompt('Enter your Artsy API token:');
+
+// Fetch the Artsy API
+fetch('https://api.artsy.net/api/artworks?bids=true', {
+  headers: {
+    'X-XAPP-Token': apiToken
+  }
+})
+.then(response => response.json())
+.then(data => {
+  // Extract relevant information from the response
+  const artworks = data._embedded.artworks;
+
+  // Loop through each artwork and print its title and image URLs
+  artworks.forEach(artwork => {
+    const { title, images } = artwork;
+    console.log(title);
+
+    if (images.length > 0) {
+      images.forEach(image => console.log(image.image_url));
+    } else {
+      console.log('No images available for this artwork.');
+    }
+
+    console.log('------------');
+  });
+})
+.catch(error => console.error(error));
