@@ -91,6 +91,10 @@
         /* The font size is not specified here, it will be inherited from the container */
         }
 
+        .negative-difference {
+        color: red;
+        }
+
     </style>
 </head>
 <body>
@@ -99,8 +103,9 @@
         <div id="round-info">Round <span id="current-round">1</span>/9</div>
         <img id="art-image" src="" alt="Art piece">
         <h2 id="art-piece-name">[Art Piece Name]</h2>
-        <br> by <br>
-        <div id="artist-name">[Artist Name]</div>
+        by <br>
+        
+        <div id="artist-name" style="font-style: italic;">[Artist Name]</div>
         <div id="original-price">Original Price: $<span id="original-price-value"></span> million</div>
 
         
@@ -109,7 +114,7 @@
             <button id="submit-guess">Submit Guess</button>
         </div>
    
-        <div id="score-info">Your Score: <span id="user-score">0</span></div>
+        <div id="score-info">Your Score: <span id="user-score">0</span></div> <br>
         <div id="gain-loss-info" style="display:none;">
             You guessed: $<span id="user-guess-value"></span> million. <br>
             Difference: $<span id="gain-loss-value"></span> million.<br>
